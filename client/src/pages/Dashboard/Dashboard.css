@@ -1,0 +1,142 @@
+.dash {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  min-height: 100vh;
+  background: var(--bg);
+}
+.dash-side {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #081628, #050e1a);
+  border-right: 1px solid var(--border);
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+.dash-side-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+.dash-close,
+.dash-toggle {
+  display: none;
+}
+.dash-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  min-width: 0;
+}
+.dash-user div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.dash-user strong,
+.dash-user small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dash-user small {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.avatar-lg {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f6c872, var(--gold-600));
+  color: #1a1305;
+  font-weight: 800;
+}
+.dash-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dash-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: none;
+  border: 1px solid transparent;
+  color: #cbd6e4;
+  font-weight: 500;
+  font-size: 0.93rem;
+  text-align: left;
+}
+.dash-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.dash-link.active {
+  color: var(--gold);
+  background: rgba(242, 190, 98, 0.12);
+  border-color: var(--border-gold);
+  font-weight: 700;
+}
+.dash-link.logout {
+  margin-top: 12px;
+  color: #fca5a5;
+}
+.dash-main {
+  min-width: 0;
+  padding: 32px clamp(16px, 3vw, 40px) 60px;
+}
+
+@media (max-width: 960px) {
+  .dash {
+    grid-template-columns: 1fr;
+  }
+  .dash-toggle {
+    display: inline-flex;
+    margin: 14px 16px 0;
+    width: fit-content;
+  }
+  .dash-side {
+    position: fixed;
+    z-index: 160;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 290px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+  .dash-side.open {
+    transform: none;
+  }
+  .dash-close {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 0;
+    color: var(--muted);
+  }
+  .dash-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    background: rgba(3, 8, 15, 0.7);
+  }
+  .dash-main {
+    padding-top: 20px;
+  }
+}

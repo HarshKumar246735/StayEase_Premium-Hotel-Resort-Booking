@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.pg-btn {
+  min-width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+.pg-btn:hover:not(:disabled) {
+  border-color: var(--border-gold);
+}
+.pg-btn.active {
+  background: var(--gold);
+  color: #1a1305;
+  border-color: var(--gold);
+}
+.pg-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pg-gap {
+  color: var(--muted);
+}

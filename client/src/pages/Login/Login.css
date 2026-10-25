@@ -1,0 +1,4 @@
+/* Login page styles live in css/auth.css (shared with Register). Page-specific overrides go here. */
+.auth-page .auth-form h1 {
+  letter-spacing: -0.01em;
+}

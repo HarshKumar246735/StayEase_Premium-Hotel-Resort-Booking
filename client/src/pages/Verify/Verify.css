@@ -1,0 +1,38 @@
+.vf-card {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+.vf-ok {
+  color: var(--success);
+}
+.vf-bad {
+  color: var(--error);
+}
+.vf-card dl {
+  width: 100%;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vf-card dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.vf-card dt {
+  color: var(--muted);
+}
+.vf-card dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}

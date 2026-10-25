@@ -1,0 +1,38 @@
+.mb-head {
+  margin-bottom: 20px;
+}
+.mb-head h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.mb-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  margin-bottom: 22px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.mb-tabs button {
+  min-height: 42px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+.mb-tabs button.on {
+  background: var(--gold);
+  color: #1a1305;
+}
+.mb-list {
+  display: grid;
+  gap: 16px;
+}
+.mb-sk {
+  height: 190px;
+  border-radius: 16px;
+}

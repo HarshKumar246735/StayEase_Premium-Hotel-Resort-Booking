@@ -1,0 +1,11 @@
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  vertical-align: middle;
+}
+.stars .on {
+  color: var(--gold);
+}
+.stars .off {
+  color: #3a4d66;
+}

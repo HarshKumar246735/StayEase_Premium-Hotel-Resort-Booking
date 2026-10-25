@@ -1,0 +1,65 @@
+.pf {
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pf-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.pf-head h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.pf-avatar {
+  width: 64px;
+  height: 64px;
+  font-size: 1.3rem;
+}
+.pf-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: none;
+}
+.pf-card h2 {
+  font-size: 1.1rem;
+}
+.pf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.pf-wide {
+  grid-column: 1 / -1;
+}
+.pf-check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.pf-check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  flex: none;
+}
+.pf-hint {
+  font-size: 0.82rem;
+}
+.pf-logout {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .pf-grid {
+    grid-template-columns: 1fr;
+  }
+}

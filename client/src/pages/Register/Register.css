@@ -1,0 +1,19 @@
+.pw-rules {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.pw-rules li::before {
+  content: '○ ';
+}
+.pw-rules li.ok {
+  color: #86efac;
+}
+.pw-rules li.ok::before {
+  content: '● ';
+}

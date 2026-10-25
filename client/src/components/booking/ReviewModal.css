@@ -1,0 +1,20 @@
+.rv-stars {
+  display: flex;
+  gap: 4px;
+}
+.rv-stars button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  color: #3a4d66;
+  border-radius: 10px;
+}
+.rv-stars button.on {
+  color: var(--gold);
+}
+.rv-stars button:hover {
+  background: rgba(242, 190, 98, 0.1);
+}

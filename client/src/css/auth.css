@@ -1,0 +1,90 @@
+.auth-page {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+}
+.auth-art {
+  position: relative;
+  overflow: hidden;
+}
+.auth-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 17, 31, 0.3), rgba(6, 17, 31, 0.92));
+}
+.auth-art-copy {
+  position: absolute;
+  z-index: 1;
+  left: 48px;
+  right: 48px;
+  bottom: 56px;
+}
+.auth-art-copy h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 10px;
+}
+.auth-art-copy p {
+  color: #d3deec;
+  max-width: 420px;
+}
+.auth-panel {
+  display: grid;
+  place-items: center;
+  padding: 40px 24px;
+}
+.auth-form {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.auth-form h1 {
+  font-size: 1.9rem;
+}
+.auth-form .sub {
+  color: var(--muted);
+  margin-top: -8px;
+}
+.pw-wrap {
+  position: relative;
+}
+.pw-wrap .input {
+  padding-right: 48px;
+}
+.pw-toggle {
+  position: absolute;
+  right: 4px;
+  top: 2px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  color: var(--muted);
+}
+.pw-toggle:hover {
+  color: var(--gold);
+}
+.auth-alt {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.auth-alt a {
+  color: var(--gold);
+  font-weight: 600;
+}
+.input.invalid {
+  border-color: var(--error);
+}
+@media (max-width: 860px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+  .auth-art {
+    display: none;
+  }
+}

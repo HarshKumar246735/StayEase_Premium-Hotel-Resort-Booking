@@ -1,0 +1,101 @@
+.search-panel {
+  display: grid;
+  grid-template-columns: 1.7fr 1.1fr 1.1fr 0.9fr 0.9fr auto;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(8, 22, 40, 0.82);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow);
+}
+.sp-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  color: var(--gold);
+  min-width: 0;
+}
+.sp-field:not(:last-of-type) {
+  border-right: 1px solid var(--border);
+}
+.sp-field:focus-within {
+  background: rgba(255, 255, 255, 0.05);
+}
+.sp-field > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+.sp-field label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.sp-field input,
+.sp-field select {
+  background: transparent;
+  border: 0;
+  padding: 2px 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 0;
+  width: 100%;
+}
+.sp-field input:focus,
+.sp-field select:focus {
+  outline: none;
+}
+.sp-field input::placeholder {
+  color: #6b7c92;
+  font-weight: 500;
+}
+.sp-field select option {
+  background: var(--bg-2);
+}
+.sp-field input[type='date'] {
+  color-scheme: dark;
+}
+.sp-submit {
+  min-height: 56px;
+  padding: 0 28px;
+  border-radius: 14px;
+}
+.sp-error {
+  grid-column: 1 / -1;
+  color: #fca5a5;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+}
+
+@media (max-width: 1100px) {
+  .search-panel {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .sp-wide {
+    grid-column: 1 / -1;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--border);
+  }
+  .sp-submit {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 640px) {
+  .search-panel {
+    grid-template-columns: 1fr 1fr;
+    border-radius: 18px;
+  }
+  .sp-field {
+    padding: 10px 12px;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--border);
+  }
+  .sp-field > svg {
+    display: none;
+  }
+}
