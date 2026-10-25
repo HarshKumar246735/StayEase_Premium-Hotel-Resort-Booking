@@ -1,65 +1,321 @@
-# StayEase — Premium Hotel & Resort Booking (MERN, demo)
+# StayEase — Premium Hotel & Resort Booking Platform
 
-Dark-navy and gold luxury-travel booking platform. **Customers only: there is no admin panel, admin login or admin route.**
-All hotels are fictional sample listings and all payments are simulated.
+StayEase is a full-stack MERN hotel booking platform where customers can explore hotels, compare prices, check room availability, book accommodations, and manage their reservations. It features a premium dark navy and gold luxury-travel design.
 
-## Stack
-- **Client:** React 18 + Vite, React Router, Axios, lucide-react, react-hot-toast, jsPDF, qrcode. Plain CSS, one CSS file per page/component, tokens in `client/src/css/global.css`. Native date inputs are used instead of a date-picker library.
-- **Server:** Node 18+, Express, Mongoose, JWT in an httpOnly cookie, bcryptjs, Helmet, CORS, rate limiting.
+All hotels are fictional demo listings, and all payments are simulated. There is no admin panel, admin login, or admin route.
 
-## Local setup
+## Technology Stack
+
+**Frontend**
+
+* React 18 + Vite
+* React Router
+* Axios
+* Lucide React
+* React Hot Toast
+* jsPDF
+* QR Code
+* Plain CSS
+
+**Backend**
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT authentication
+* HTTP-only cookies
+* bcryptjs
+* Helmet
+* CORS
+* Rate limiting
+
+## Project Workflow
+
+```text
+                 STAYEASE
+                    |
+                    v
+               Home Page
+                    |
+                    v
+             Search for Hotels
+                    |
+                    v
+             Browse Hotel List
+                    |
+                    v
+              Hotel Details
+                    |
+                    v
+             Login / Register
+                    |
+                    v
+             Select Room & Dates
+                    |
+                    v
+             Check Availability
+                    |
+                    v
+              Booking Checkout
+                    |
+                    v
+              Demo Payment
+                    |
+                    v
+            Booking Confirmation
+                    |
+             +------+------+
+             |             |
+             v             v
+          QR Code       PDF Ticket
+             |
+             v
+         My Bookings
+             |
+       +-----+------+
+       |            |
+       v            v
+    Wishlist     My Profile
+                    |
+                    v
+                My Reviews
+```
+
+## Main Pages and Functionalities
+
+### 1. Home Page
+
+* Premium luxury-themed landing page.
+* Hotel search section.
+* Featured hotels.
+* Popular destinations.
+* Special offers.
+* Responsive navigation.
+
+### 2. Explore Hotels
+
+* Search hotels by city or destination.
+* Filter by price, rating, stars, and amenities.
+* Sort hotels by price and popularity.
+* Filter by breakfast, pool, family-friendly facilities, and pet-friendly policies.
+* View hotel images and basic information.
+
+### 3. Hotel Details
+
+* Hotel description and images.
+* Available room types.
+* Room prices and facilities.
+* Guest ratings and reviews.
+* Check-in and check-out date selection.
+* Room availability checking.
+
+### 4. Customer Authentication
+
+* Customer registration.
+* Customer login and logout.
+* Secure password hashing.
+* JWT authentication using HTTP-only cookies.
+* Session restoration after refreshing the browser.
+* Change-password functionality.
+
+### 5. Booking System
+
+* Select a hotel and room type.
+* Choose check-in and check-out dates.
+* Select the number of guests and rooms.
+* Verify availability for every night.
+* Calculate the final price on the server.
+* Prevent duplicate bookings using idempotency keys.
+* Prevent overbooking through atomic inventory updates.
+* Cancel eligible bookings and release reserved inventory.
+
+### 6. Demo Payment System
+
+Customers can choose:
+
+* Demo UPI.
+* Demo card.
+* Pay at property.
+
+Payments are simulated. The platform does not collect actual card details or process real transactions.
+
+### 7. Booking Confirmation
+
+* Booking reference number.
+* Hotel and room information.
+* Guest details.
+* Check-in and check-out dates.
+* Total price and booking status.
+* QR code for booking verification.
+* Downloadable PDF confirmation.
+
+### 8. My Bookings
+
+* View upcoming reservations.
+* View previous bookings.
+* Open booking details.
+* Cancel eligible bookings.
+* Access booking confirmations.
+
+### 9. Wishlist
+
+* Add hotels to favourites.
+* View saved hotels.
+* Remove hotels from the wishlist.
+
+### 10. Customer Profile
+
+* View personal information.
+* Update name, phone number, and preferences.
+* Change password.
+* Manage newsletter preferences.
+
+### 11. Reviews and Ratings
+
+* View hotel reviews.
+* Submit reviews for eligible completed stays.
+* Allow one review per booking.
+* Recalculate hotel ratings from stored reviews.
+
+## Sample Hotel Data
+
+The project includes 108 fictional sample hotels and 324 demo reviews.
+
+The hotel seeding script can be rerun safely. It updates hotel records by slug and demo reviews by their keys without intentionally replacing customer accounts, bookings, wishlists, or inventory.
+
+## System Architecture
+
+```text
++--------------------------------+
+|       React Frontend           |
+|                                |
+| Home, Hotels, Booking, Profile  |
++---------------+----------------+
+                |
+                | HTTP / REST API
+                v
++--------------------------------+
+|       Express Backend          |
+|                                |
+| Authentication                 |
+| Hotel Search                   |
+| Booking Management             |
+| Pricing and Inventory          |
+| Reviews and Wishlists          |
++---------------+----------------+
+                |
+                | Mongoose
+                v
++--------------------------------+
+|          MongoDB               |
+|                                |
+| Users                          |
+| Hotels                         |
+| Bookings                       |
+| Inventory                      |
+| Reviews                        |
+| Wishlists                      |
++--------------------------------+
+```
+
+## Local Setup
+
+### Start the Backend
+
 ```bash
-# 1. API
 cd server
-cp .env.example .env        # fill MONGODB_URI and JWT_SECRET
 npm install
-npm run seed:hotels         # 108 hotels + 324 demo reviews, safe to re-run
-npm run dev                 # http://localhost:5000
+```
 
-# 2. Client (new terminal)
+Create a `.env` file inside the `server` directory:
+
+```env
+NODE_ENV=development
+PORT=5000
+CLIENT_URL=http://localhost:5173
+MONGODB_URI=mongodb://127.0.0.1:27017/stayease
+JWT_SECRET=replace-with-a-long-random-secret
+COOKIE_NAME=stayease_token
+```
+
+If you use MongoDB Atlas, replace the local MongoDB URI with your Atlas connection string.
+
+Seed the demo hotels:
+
+```bash
+npm run seed:hotels
+```
+
+Start the backend:
+
+```bash
+npm run dev
+```
+
+### Start the Frontend
+
+Open another terminal:
+
+```bash
 cd client
 npm install
-npm run dev                 # http://localhost:5173 (proxies /api to :5000)
 ```
-Database: create a free MongoDB Atlas cluster, add a database user, allow your IP, and paste the connection string into `MONGODB_URI`.
 
-## Seeding
-`npm run seed:hotels` upserts hotels by slug and demo reviews by key. It never touches users, bookings, wishlists or inventory. `guestRating` and `reviewCount` are only written on first insert, so real reviews survive a re-seed. Data lives in `server/src/seed/hotelData.js`; images are configured in `server/src/seed/imageConfig.js` (change an ID there to change images everywhere). Images are Unsplash photo IDs and **were not link-checked**; the client swaps in a branded fallback for any URL that fails.
+Create `client/.env`:
 
-## Environment variables
-| Server | Meaning |
-|---|---|
-| `MONGODB_URI` | Atlas connection string |
-| `JWT_SECRET` | 16+ random characters (required) |
-| `CLIENT_URL` | Allowed origin(s), comma-separated, e.g. `https://stayease.vercel.app` |
-| `NODE_ENV` | `production` on Render |
-| `PORT` | Render sets this |
-| `COOKIE_NAME` | optional, default `stayease_token` |
+```env
+VITE_API_URL=
+```
 
-Client: `VITE_API_URL` — the Render URL (no trailing slash). Leave empty in development.
+Start the frontend:
 
-## Deploy
-- **Render (API):** Web service, root `server`, build `npm install`, start `npm start`, add the env vars above, then run `npm run seed:hotels` once from the Render shell or locally against the Atlas URI.
-- **Vercel (client):** root `client`, build `npm run build`, output `dist`, set `VITE_API_URL`. `vercel.json` rewrites all routes to `index.html`.
-- Production cookies are `Secure` + `SameSite=None` (Vercel and Render are different sites), so both must be served over HTTPS and `CLIENT_URL` must exactly match the Vercel origin.
+```bash
+npm run dev
+```
 
-## How the important parts work
-- **No overbooking:** one `Inventory` document per hotel + room type + night. Booking atomically increments `booked` with a conditional `findOneAndUpdate` per night and rolls back if any night is full. A stay occupies nights `[check-in, check-out)`, so a guest checking out on the 10th does not block one checking in on the 10th. Cancelling releases the nights.
-- **Server-side pricing:** totals, discounts and taxes are only calculated in `bookingService.computePricing`; the client never sends prices. The booking stores a price and hotel snapshot.
-- **No duplicate bookings:** each checkout carries an idempotency key (unique per user); repeats return the original booking.
-- **Demo payments:** Demo UPI / Demo card / Pay at property. No card data is collected; transactions are labelled `DEMO-…`.
-- **QR & PDF:** the QR contains only `/verify/<random code>`; the public endpoint returns hotel, dates, first name + initial and status.
-- **Reviews:** only for your own confirmed bookings after check-out, one per booking; ratings are recomputed inside MongoDB.
-- **Security:** Helmet, credentialed CORS allow-list, auth rate limiting, hashed passwords, ownership checks on every user route, and a CSRF guard (state-changing requests must send `X-Requested-With: StayEase`, which forces a CORS preflight).
+Open the application at:
 
-## API
-`/api/auth/{register,login,logout,me,change-password}` · `/api/users/me` · `/api/hotels` (`?q&city&minPrice&maxPrice&stars&rating&types&amenities&breakfast&freeCancellation&pool&family&pet&offer&guests&rooms&sort&page&limit`) · `/api/hotels/{featured,destinations,offers,:slug,:id/availability,:hotelId/reviews}` · `/api/bookings` (`POST`, `my-bookings`, `verify/:code`, `:id`, `:id/cancel`, `:id/confirmation`) · `/api/wishlist` · `/api/reviews/{mine,:reviewId}`.
+http://localhost:5173
 
-## Troubleshooting
-- **401 right after login in production:** `CLIENT_URL` mismatch, or the API is not on HTTPS.
-- **CORS error:** add the exact client origin (no trailing slash) to `CLIENT_URL`.
-- **Empty hotel list:** run `npm run seed:hotels`.
-- **`Missing CSRF header`:** custom API callers must send `X-Requested-With: StayEase`.
+The frontend development server should proxy `/api` requests to the backend running on port 5000.
 
-## Status
-Written and syntax-checked, but **not yet installed, built or run** (package registry access was blocked while this was authored). Run `npm install` in both folders, then work through the checklist: register/login/refresh, filters and sorting, wishlist, booking, a second booking on the same dates after the room count is exhausted, cancel, PDF/QR, review after a past stay, mobile widths.
+## Deployment
+
+### Backend — Render
+
+* Root directory: `server`
+* Build command: `npm install`
+* Start command: `npm start`
+* Configure `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL`, and `NODE_ENV`.
+* Run the hotel seeding script against the production database.
+
+### Frontend — Vercel
+
+* Root directory: `client`
+* Build command: `npm run build`
+* Output directory: `dist`
+* Set `VITE_API_URL` to the deployed backend URL, including `/api` only if required by the client's API configuration.
+
+For production authentication, use HTTPS and configure credentialed CORS and secure cookies correctly.
+
+## Security Features
+
+* Hashed passwords.
+* HTTP-only authentication cookies.
+* JWT validation.
+* Authentication rate limiting.
+* CORS origin allow-list.
+* Helmet security headers.
+* CSRF protection for state-changing requests.
+* Customer ownership checks.
+* Server-side pricing calculations.
+* Atomic inventory updates.
+* Duplicate-booking protection.
+
+## Important Notes
+
+* All hotels and reviews are fictional demonstration data.
+* Payments are simulated and do not transfer real money.
+* The platform has no admin panel or admin login.
+* Production deployment and all functionality must be tested before the project is considered complete.
