@@ -1,4 +1,6 @@
 # StayEase — Premium Hotel & Resort Booking Platform
+<img width="1888" height="912" alt="image" src="https://github.com/user-attachments/assets/b0cf8f3c-bfa2-4670-b9b5-dd7f1c719051" />
+
 
 StayEase is a full-stack MERN hotel booking platform where customers can explore hotels, compare prices, check room availability, book accommodations, and manage their reservations. It features a premium dark navy and gold luxury-travel design.
 
