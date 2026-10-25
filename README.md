@@ -96,6 +96,8 @@ All hotels are fictional demo listings, and all payments are simulated. There is
 * Responsive navigation.
 
 ### 2. Explore Hotels
+<img width="1891" height="912" alt="image" src="https://github.com/user-attachments/assets/f2af5057-739a-4235-bf11-000f358c83b4" />
+
 
 * Search hotels by city or destination.
 * Filter by price, rating, stars, and amenities.
@@ -104,6 +106,8 @@ All hotels are fictional demo listings, and all payments are simulated. There is
 * View hotel images and basic information.
 
 ### 3. Hotel Details
+<img width="1885" height="912" alt="image" src="https://github.com/user-attachments/assets/fe66e5a0-8977-4859-8c53-b73bf8f956bf" />
+
 
 * Hotel description and images.
 * Available room types.
